@@ -81,6 +81,7 @@ public class ModelEngine {
     });
     private static Path modelPath;
     private static Material modelMaterial = Material.MAGMA_CREAM;
+    private static int displayInterpolation = 1;
 
     /**
      * Loads the model from the given path. Assumes the server is already initialized.
@@ -161,6 +162,14 @@ public class ModelEngine {
 
     public static void setModelMaterial(Material modelMaterial) {
         ModelEngine.modelMaterial = modelMaterial;
+    }
+
+    public static void setDisplayInterpolation(int displayInterpolation) {
+        ModelEngine.displayInterpolation = displayInterpolation;
+    }
+
+    public static int getDisplayInterpolation() {
+        return displayInterpolation;
     }
 
     public static Optional<MQLPoint> getMQLPos(JsonArray arr) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {

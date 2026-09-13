@@ -13,6 +13,7 @@ import net.minestom.server.instance.Instance;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.network.packet.server.play.EntityMetaDataPacket;
 import net.worldseed.multipart.GenericModel;
+import net.worldseed.multipart.ModelEngine;
 import net.worldseed.multipart.Quaternion;
 import net.worldseed.multipart.model_bones.BoneEntity;
 import net.worldseed.multipart.model_bones.ModelBone;
@@ -45,8 +46,8 @@ public class ModelBonePartDisplay extends ModelBoneImpl implements ModelBoneView
 
             itemMeta.setScale(new Vec(scale, scale, scale));
             itemMeta.setDisplayContext(ItemDisplayMeta.DisplayContext.FIXED);
-            itemMeta.setTransformationInterpolationDuration(2);
-            itemMeta.setPosRotInterpolationDuration(2);
+            itemMeta.setTransformationInterpolationDuration(ModelEngine.getDisplayInterpolation());
+            itemMeta.setPosRotInterpolationDuration(ModelEngine.getDisplayInterpolation());
             itemMeta.setViewRange(1000);
             // Large multipart models often shade nearly black because every display samples light
             // only at its tiny carrier/root position, even when the visible bone is many blocks
