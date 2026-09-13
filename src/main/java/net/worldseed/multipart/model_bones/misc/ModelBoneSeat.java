@@ -22,7 +22,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class ModelBoneSeat extends ModelBoneImpl implements RideableBone {
 
-    private boolean followModelRotation = false;
+    private boolean followModelRotation = true;
 
     public ModelBoneSeat(Point pivot, String name, Point rotation, GenericModel model, float scale) {
         super(pivot, name, rotation, model, scale);
