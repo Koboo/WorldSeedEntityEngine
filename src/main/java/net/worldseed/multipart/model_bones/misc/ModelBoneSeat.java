@@ -22,7 +22,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class ModelBoneSeat extends ModelBoneImpl implements RideableBone {
 
-    private boolean rotateWithModel = false;
+    private boolean followModelRotation = false;
 
     public ModelBoneSeat(Point pivot, String name, Point rotation, GenericModel model, float scale) {
         super(pivot, name, rotation, model, scale);
@@ -140,7 +140,7 @@ public class ModelBoneSeat extends ModelBoneImpl implements RideableBone {
         if (this.offset == null) return;
 
         Pos target = calculatePosition();
-        if(!rotateWithModel) {
+        if(!followModelRotation) {
             Pos standPos = stand.getPosition();
             stand.teleport(new Pos(
                     target.x(), target.y(), target.z(),
@@ -152,13 +152,13 @@ public class ModelBoneSeat extends ModelBoneImpl implements RideableBone {
     }
 
     @Override
-    public void setRotateWithModel(boolean rotateWithModel) {
-        this.rotateWithModel = rotateWithModel;
+    public void setFollowModelRotation(boolean followModelRotation) {
+        this.followModelRotation = followModelRotation;
     }
 
     @Override
-    public boolean isRotateWithModel() {
-        return rotateWithModel;
+    public boolean isFollowModelRotation() {
+        return followModelRotation;
     }
 
     @Override

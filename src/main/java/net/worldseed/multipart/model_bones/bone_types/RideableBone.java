@@ -8,14 +8,14 @@ import java.util.List;
 public interface RideableBone extends ModelBone {
     /**
      * Allows to set the seat rotation independent of the model rotation.
-     * @param rotateWithModel if the seat should rotate with the model
+     * @param followModelRotation if the seat should rotate with the model
      */
-    void setRotateWithModel(boolean rotateWithModel);
+    void setFollowModelRotation(boolean followModelRotation);
 
     /**
      * @return if the seat is rotating independently of the model.
      */
-    boolean isRotateWithModel();
+    boolean isFollowModelRotation();
 
     /**
      * Delegator of {@link Entity#addPassenger(Entity)}
