@@ -142,11 +142,10 @@ public class ModelBoneSeat extends ModelBoneImpl implements RideableBone {
         Pos target = calculatePosition();
         if(!followModelRotation) {
             Pos standPos = stand.getPosition();
-            stand.teleport(new Pos(
+            target = new Pos(
                     target.x(), target.y(), target.z(),
                     standPos.yaw(), standPos.pitch()
-            ));
-            return;
+            );
         }
         stand.teleport(target);
     }
