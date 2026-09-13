@@ -22,6 +22,8 @@ import java.util.concurrent.CompletableFuture;
 
 public class ModelBoneSeat extends ModelBoneImpl implements RideableBone {
 
+    private boolean rotateWithModel = false;
+
     public ModelBoneSeat(Point pivot, String name, Point rotation, GenericModel model, float scale) {
         super(pivot, name, rotation, model, scale);
 
@@ -137,11 +139,26 @@ public class ModelBoneSeat extends ModelBoneImpl implements RideableBone {
         this.children.forEach(ModelBone::draw);
         if (this.offset == null) return;
 
-        Pos found = calculatePosition();
+        Pos target = calculatePosition();
+        if(!rotateWithModel) {
+            Pos standPos = stand.getPosition();
+            stand.teleport(new Pos(
+                    target.x(), target.y(), target.z(),
+                    standPos.yaw(), standPos.pitch()
+            ));
+            return;
+        }
+        stand.teleport(target);
+    }
 
-        // TODO: needed by minestom?
-        stand.setView(found.yaw(), found.pitch());
-        stand.teleport(found);
+    @Override
+    public void setRotateWithModel(boolean rotateWithModel) {
+        this.rotateWithModel = rotateWithModel;
+    }
+
+    @Override
+    public boolean isRotateWithModel() {
+        return rotateWithModel;
     }
 
     @Override
